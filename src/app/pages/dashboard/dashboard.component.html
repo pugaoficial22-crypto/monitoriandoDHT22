@@ -1,0 +1,47 @@
+<div class="dash-wrapper">
+  <header>
+    <h2>Dashboard DHT22</h2>
+    <button (click)="logout()">Salir</button>
+  </header>
+
+  <section class="controls">
+    <label>Intervalo (segundos)
+      <input type="number" min="1" [(ngModel)]="intervalSec" />
+    </label>
+    <button (click)="updateInterval()" [disabled]="intervalLoading">Actualizar intervalo</button>
+    <button (click)="showAll()" [disabled]="loadingAll">Mostrar todo</button>
+    <button (click)="showRecent()" [disabled]="loadingRecent">Mostrar recientes</button>
+    <button (click)="refreshNow()" [disabled]="refreshLoading">Refrescar ahora</button>
+    <button (click)="deleteAllTelemetry()">Borrar todos</button>
+    <button (click)="downloadCSV()">Descargar CSV</button>
+    <span *ngIf="intervalMsg" class="msg">{{ intervalMsg }}</span>
+  </section>
+
+  <section class="charts">
+    <p-card class="chart-card">
+      <canvas id="tempChart"></canvas>
+    </p-card>
+    <p-card class="chart-card">
+      <canvas id="humChart"></canvas>
+    </p-card>
+  </section>
+
+  <section class="history">
+    <h3>Historial reciente</h3>
+    <div class="history-controls">
+      <button (click)="prevPage()" [disabled]="page<=1">Anterior</button>
+      <span>Página {{page}} / {{pageCount}}</span>
+      <button (click)="nextPage()" [disabled]="page>=pageCount">Siguiente</button>
+    </div>
+    <table>
+      <thead><tr><th>Tiempo</th><th>Temp °C</th><th>Hum %</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let r of pageItems()">
+          <td>{{ r.timestamp | date:'HH:mm:ss' }}</td>
+          <td>{{ r.temperature }}</td>
+          <td>{{ r.humidity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

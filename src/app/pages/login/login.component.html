@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+  <p-card>
+    <div class="card-content">
+      <h2>Ingreso</h2>
+      <img src="assets/login-illustration.svg" alt="Ilustración login" class="login-illustration" />
+
+      <form (ngSubmit)="submit()" #f="ngForm" class="login-form">
+        <label class="p-float-label">
+          <input pInputText type="email" name="email" [(ngModel)]="email" required />
+          <span>Email</span>
+        </label>
+
+        <label class="p-float-label">
+          <input pInputText type="password" name="password" [(ngModel)]="password" required />
+          <span>Password</span>
+        </label>
+
+        <button pButton type="submit" label="Entrar" [disabled]="loading || f.invalid"></button>
+        <p class="error" *ngIf="error">{{ error }}</p>
+      </form>
+    </div>
+  </p-card>
+</div>

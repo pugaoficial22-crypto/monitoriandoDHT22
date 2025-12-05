@@ -1,4 +1,11 @@
-/* Paleta y tema global */
+:root {
+	/* PrimeNG / PrimeIcons imports */
+}
+
+@import "~primeflex/primeflex.css";
+@import "~primeicons/primeicons.css";
+/* Note: PrimeNG core styles and a theme can be added here if available */
+
 /* Paleta y tema global */
 /* Paleta y tema global */
 :root {

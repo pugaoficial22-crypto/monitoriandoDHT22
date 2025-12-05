@@ -1,0 +1,53 @@
+.dash-wrapper {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+h2 { color: var(--color-accent-green); margin:0; font-size:1.05rem; }
+
+header button { background: var(--color-accent-purple); color:#fff; border:none; padding:.5rem .8rem; border-radius:8px; }
+
+.controls { display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-end; }
+.controls label { display:flex; flex-direction:column; font-size:.85rem; color:var(--color-text); }
+.controls input { background: var(--color-surface); color: var(--color-text); border:1px solid var(--color-accent); border-radius:6px; padding:.4rem .6rem; width:110px; }
+.controls button { background: linear-gradient(135deg,var(--color-accent) 0%, var(--color-accent-green) 100%); color:#fff; border:none; padding:.5rem .8rem; border-radius:8px; font-weight:600; }
+
+/* Layout for charts: single column on small screens, two columns on wider */
+.charts { display:grid; gap:1rem; align-items:stretch; grid-template-columns: 1fr; }
+@media (min-width:680px){ .charts { grid-template-columns: 1fr 1fr; } }
+
+/* Each chart gets a card container with fixed height so Chart.js can fill it */
+.chart-card { background: var(--color-surface); padding:.6rem; border-radius:12px; height:220px; display:flex; }
+@media (min-width:680px){ .chart-card { height:320px; } }
+
+/* Make the canvas fill its container */
+canvas { width:100% !important; height:100% !important; display:block; }
+
+.history { overflow:auto; }
+.history table { width:100%; border-collapse:collapse; font-size:.85rem; min-width:480px; }
+th, td { padding:.4rem .5rem; text-align:center; }
+thead { background: var(--color-accent); color:#fff; }
+tbody tr:nth-child(even){ background: rgba(255,255,255,.03); }
+.msg { font-size:.78rem; color: var(--color-accent-green); }
+
+.history-controls { display:flex; gap:.6rem; align-items:center; margin-bottom:.6rem; }
+.history-controls button { background: linear-gradient(135deg,var(--color-accent) 0%, var(--color-accent-green) 100%); color:#fff; border:none; padding:.4rem .6rem; border-radius:8px; }
+
+/* Mobile adjustments */
+@media (max-width:679px){
+	.controls { flex-direction: column; align-items: stretch; }
+	.controls input { width: 100%; max-width: none; }
+	.controls button { width: 100%; }
+	.history table { min-width: 420px; }
+}
