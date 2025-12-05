@@ -18,6 +18,13 @@
         <button pButton type="submit" label="Entrar" [disabled]="loading || f.invalid"></button>
         <p class="error" *ngIf="error">{{ error }}</p>
       </form>
+      <div class="demo-creds">
+        <p><strong>Usuarios de prueba:</strong></p>
+        <ul>
+          <li><code>admin</code> / <code>admin123</code> (administrador)</li>
+          <li><code>user</code> / <code>user123</code> (visualizador)</li>
+        </ul>
+      </div>
     </div>
   </p-card>
 </div>
